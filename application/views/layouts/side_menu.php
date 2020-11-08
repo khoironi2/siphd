@@ -6,8 +6,6 @@
       <li><a href="<?php echo base_url(); ?>artikel"><i class="fa fa-file-text"></i> Artikel</a></li>
       <li><a href="<?php echo base_url(); ?>produk"><i class="fa fa-cube"></i>Produk</a></li>
       <li><a href="<?php echo base_url(); ?>kategori_produk"><i class="fa fa-list"></i>Produk Kategori</a></li>
-      <li><a href="<?php echo base_url(); ?>hewan"><i class="fa fa-paw"></i>Hewan Adopsi</a></li>
-      <li><a href="<?php echo base_url(); ?>emergency"><i class="fa fa-exclamation-triangle"></i>Emergency Call</a></li>
       <li><a href="<?php echo base_url(); ?>payment"><i class="fa fa-shopping-bag"></i>Konfirmasi Checkout</a></li>
       <li><a href="<?php echo base_url(); ?>laporan/pemasukan"><i class="fa fa-shopping-bag"></i>Laporan Pemasukan</a></li>
       <li><a href="<?php echo base_url(); ?>laporan/pengeluaran"><i class="fa fa-shopping-bag"></i>Laporan Pengeluaran</a></li>

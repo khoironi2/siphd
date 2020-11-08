@@ -31,6 +31,8 @@
 	<link href="<?php echo base_url(); ?>assets/build/css/custom.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/build/css/jconfirm.min.css" rel="stylesheet">
 
+	<link href="<?php echo base_url(); ?>assets/pemilik/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 	<!-- jQuery -->
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
 	<?php $userdata = $this->session->all_userdata(); ?>
@@ -128,6 +130,9 @@
 	<script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
 	<!-- Custom Theme Scripts -->
 	<script src="<?php echo base_url(); ?>assets/build/js/custom.js"></script>
+	
+	<script src="<?= base_url('assets/pemilik/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
+	<script src="<?= base_url('assets/pemilik/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
 	<script type="text/javascript">
 		var baseURL = "<?php echo base_url(); ?>";
@@ -144,6 +149,10 @@
 				}
 			}
 		});
+
+		$(document).ready(function() {
+			$('#datatable').DataTable();
+		} );
 	</script>
 
 </body>

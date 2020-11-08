@@ -36,7 +36,7 @@
       <?php } ?>
       <br>
       <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="datatable">
           <thead>
             <tr>
               <th width="5%">No</th>
