@@ -1,5 +1,5 @@
 	<div class="home">
-		<div class="banner_background" style="background-image:url(<?= base_url('assets/frontend/'); ?>images/catbackground.jpg)"></div>
+		<div class="banner_background" style="background-image:url(<?= base_url('assets/frontend/'); ?>images/weddingcake.jpg)"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
 			<h2 class="home_title" style="color: white">About Us</h2>
 		</div>
