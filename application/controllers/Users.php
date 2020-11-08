@@ -1,25 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/Base.php");
 
 
-class Users extends Base {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     *      http://example.com/index.php/welcome
-     *  - or -
-     *      http://example.com/index.php/welcome/index
-     *  - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/users_guide/general/urls.html
-     */
+class Users extends Base
+{
 
     public function __construct()
     {
@@ -27,6 +12,7 @@ class Users extends Base {
         parent::__construct();
         // load model
         $this->load->model('m_users');
+        $this->load->model('m_setting');
         // Load library
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -36,36 +22,36 @@ class Users extends Base {
     public function index()
     {
         header("Access-Control-Allow-Origin: *");
-    
+
         // get data
         $total = $this->m_users->get_total_users();
 
         $this->load->library('pagination');
-        $config['base_url'] = base_url().'users/index/';
+        $config['base_url'] = base_url() . 'users/index/';
         $config['total_rows'] = $total;
         $config['per_page'] = 25;
         $config['uri_segment'] = 3;
         $config['from'] = $this->uri->segment(3);
         $from = $this->uri->segment(3);
 
-        $this->pagination->initialize($config); 
+        $this->pagination->initialize($config);
 
         $data['users'] = $this->m_users->get_all_users(array(empty($from) ? 0 : intval($from), $config['per_page']));
 
         $numb = empty($from) ? 1 : intval($from);
         $data["links"] = $this->pagination->create_links();
         $data["no"]    = $numb++;
-
+        $data['setting'] = $this->m_setting->getAll();
         // assign data
         $this->template->set('title', 'users usershop Ku');
-        $this->template->load('default', 'contents' , 'users/index.php', $data);
- 
+        $this->template->load('default', 'contents', 'users/index.php', $data);
     }
 
 
-    public function add($id ='')
+    public function add($id = '')
     {
-        $this->template->load('default', 'contents','users/add');
+        $data['setting'] = $this->m_setting->getAll();
+        $this->template->load('default', 'contents', 'users/add', $data);
     }
 
 
@@ -82,16 +68,16 @@ class Users extends Base {
         $this->form_validation->set_rules('birthday', 'Tgl. Lahir', 'trim');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('confirm_password', 'Konfirmasi', 'required|matches[password]');
-       
+
         // validate
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', validation_errors());
             redirect('users/add');
-        }else{
+        } else {
             // check  email
             $email = $this->m_users->check_user_email($this->input->post('email'));
             if ($email) {
-                 $this->session->set_flashdata('error', 'Email sudah digunakan !!');
+                $this->session->set_flashdata('error', 'Email sudah digunakan !!');
                 redirect('users/add');
             }
 
@@ -105,7 +91,7 @@ class Users extends Base {
             $config['upload_path'] = './uploads/users/';
             $config['allowed_types'] = 'jpeg|jpg|png';
             $config['max_size'] = 10240;
-            
+
             // load library
             $this->load->library('upload', $config);
 
@@ -113,7 +99,7 @@ class Users extends Base {
                 if (!$this->upload->do_upload('file')) {
                     $this->session->set_flashdata('error', $this->upload->display_errors());
                     redirect('users/add');
-                }else{
+                } else {
                     $data = $this->upload->data();
                     $insert = array(
                         'username'      => $this->input->post('username'),
@@ -125,24 +111,24 @@ class Users extends Base {
                         'phone'         => $this->input->post('phone'),
                         'birthday'      => $this->input->post('birthday'),
                         'password'      => md5($this->input->post('password')),
-                        'file'          => $data['file_name'],  
+                        'file'          => $data['file_name'],
                     );
-                }   
-            }else{
+                }
+            } else {
                 $insert = array(
-                        'username'      => $this->input->post('username'),
-                        'email'         => $this->input->post('email'),
-                        'user_type'     => $this->input->post('user_type'),
-                        'active'        => $this->input->post('active'),
-                        'fullname'      => $this->input->post('fullname'),
-                        'address'       => $this->input->post('address'),
-                        'phone'         => $this->input->post('phone'),
-                        'birthday'      => $this->input->post('birthday'),
-                        'password'      => md5($this->input->post('password')), 
-                    );
+                    'username'      => $this->input->post('username'),
+                    'email'         => $this->input->post('email'),
+                    'user_type'     => $this->input->post('user_type'),
+                    'active'        => $this->input->post('active'),
+                    'fullname'      => $this->input->post('fullname'),
+                    'address'       => $this->input->post('address'),
+                    'phone'         => $this->input->post('phone'),
+                    'birthday'      => $this->input->post('birthday'),
+                    'password'      => md5($this->input->post('password')),
+                );
             }
-            
-            
+
+
             // insert process
             $return = $this->m_users->insert_users($insert);
             if ($return) {
@@ -152,14 +138,14 @@ class Users extends Base {
                 $this->session->set_flashdata('error', 'Data gagal disimpan !!');
                 redirect('users/add/');
             }
-            
         }
     }
 
-    public function edit($id ='')
+    public function edit($id = '')
     {
+        $result['setting'] = $this->m_setting->getAll();
         $result['detail'] = $this->m_users->get_detail_users($id);
-        $this->template->load('default', 'contents','users/edit', $result);
+        $this->template->load('default', 'contents', 'users/edit', $result);
     }
 
     public function edit_process()
@@ -175,30 +161,30 @@ class Users extends Base {
         $this->form_validation->set_rules('birthday', 'Tgl. Lahir', 'trim');
         $this->form_validation->set_rules('password', 'Password', 'trim');
         $this->form_validation->set_rules('confirm_password', 'Konfirmasi', 'trim|matches[password]');
-       
-       
+
+
         // validate
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('users/edit/'.$this->input->post('id_users'));
-        }else{
+            redirect('users/edit/' . $this->input->post('id_users'));
+        } else {
             $email = $this->m_users->check_user_email_edit($this->input->post('email'), $this->input->post('id_users'));
             if ($email) {
-                 $this->session->set_flashdata('error', 'Email sudah digunakan !!');
-                redirect('users/edit/'.$this->input->post('id_users'));
+                $this->session->set_flashdata('error', 'Email sudah digunakan !!');
+                redirect('users/edit/' . $this->input->post('id_users'));
             }
 
-            $username = $this->m_users->check_username_edit($this->input->post('username'),$this->input->post('id_users'));
+            $username = $this->m_users->check_username_edit($this->input->post('username'), $this->input->post('id_users'));
             if ($username) {
                 $this->session->set_flashdata('error', 'Username sudah digunakan !!');
-                redirect('users/edit/'.$this->input->post('id_users'));
+                redirect('users/edit/' . $this->input->post('id_users'));
             }
 
             // check file 
             $config['upload_path'] = './uploads/users/';
             $config['allowed_types'] = 'jpeg|jpg|png';
             $config['max_size'] = 10240;
-            
+
             // load library
             $this->load->library('upload', $config);
 
@@ -206,7 +192,7 @@ class Users extends Base {
                 if (!$this->upload->do_upload('file')) {
                     $this->session->set_flashdata('error', $this->upload->display_errors());
                     redirect('users/add');
-                }else{
+                } else {
                     $data = $this->upload->data();
                     $update = array(
                         'username'      => $this->input->post('username'),
@@ -217,10 +203,10 @@ class Users extends Base {
                         'address'       => $this->input->post('address'),
                         'phone'         => $this->input->post('phone'),
                         'birthday'      => $this->input->post('birthday'),
-                        'file'          => $data['file_name'],  
+                        'file'          => $data['file_name'],
                     );
-                }   
-            }else{
+                }
+            } else {
                 $update = array(
                     'username'      => $this->input->post('username'),
                     'email'         => $this->input->post('email'),
@@ -236,23 +222,23 @@ class Users extends Base {
             if (!empty($this->input->post('password'))) {
                 $update['password'] = md5($this->input->post('password'));
             }
-            
+
             $where = array('id_users' => $this->input->post('id_users'));
-            
+
             // insert process
             $return = $this->m_users->update_users($update, $where);
             if ($return) {
                 $this->session->set_flashdata('success', 'Data berhasil disimpan !!');
-                redirect('users/edit/'.$this->input->post('id_users'));
+                redirect('users/edit/' . $this->input->post('id_users'));
             } else {
                 $this->session->set_flashdata('error', 'Data gagal disimpan !!');
-                redirect('users/edit/'.$this->input->post('id_users'));
+                redirect('users/edit/' . $this->input->post('id_users'));
             }
         }
     }
 
 
-    public function delete($id ='')
+    public function delete($id = '')
     {
         if (empty($id)) {
             $this->session->set_flashdata('error', 'Internal Error !!');
@@ -266,12 +252,12 @@ class Users extends Base {
                 // notification
                 $this->session->set_flashdata('success', 'Data berhasil di hapus !!');
                 redirect('users');
-            }else{
+            } else {
                 // notification
                 $this->session->set_flashdata('error', 'Data gagal di hapus !!');
                 redirect('users');
             }
-        }else{
+        } else {
             // notification
             $this->session->set_flashdata('error', 'Data gagal di hapus !!');
             redirect('users');

@@ -1,32 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class About_us extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+class About_us extends CI_Controller
+{
 
 	public function __construct()
-    {
-        // Construct the parent class
-        parent::__construct();
-         $this->load->library('session');
-        // load model
-        $this->load->model('m_home');
-    }
+	{
+		// Construct the parent class
+		parent::__construct();
+		$this->load->library('session');
+		// load model
+		$this->load->model('m_home');
+		$this->load->model('M_setting');
+	}
 
 	public function index()
 	{
@@ -35,12 +21,10 @@ class About_us extends CI_Controller {
 		$data['cat_prod'] = $this->m_home->get_category_product();
 		$data['title'] = 'Petshop';
 		$data['count_cart'] = $this->m_home->get_count_cart();
-	
-        $this->load->view('layouts/header', $data);
-        $this->load->view('public/about_us');
-        $this->load->view('layouts/footer');
- 
+		$data['setting'] = $this->M_setting->getAll();
+
+		$this->load->view('layouts/header', $data);
+		$this->load->view('public/about_us');
+		$this->load->view('layouts/footer');
 	}
-
-
 }
