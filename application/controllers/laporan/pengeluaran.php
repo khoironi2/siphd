@@ -1,12 +1,7 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-require_once(dirname(__FILE__) . "/Base.php");
 
-
-class Pengeluaran extends Base
+class Pengeluaran extends CI_Controller
 {
-
-
     public function __construct()
     {
         // Construct the parent class
@@ -41,10 +36,42 @@ class Pengeluaran extends Base
         $numb = empty($from) ? 1 : intval($from);
         $data["links"] = $this->pagination->create_links();
         $data["no"]    = $numb++;
+        $data = [
+            'saldoku' => $this->M_laporan_pengeluaran->getTotalPengeluaran(),
+            'pengeluaran' => $this->M_laporan_pengeluaran->getAll()
+        ];
 
         // assign data
-        $this->template->set('title', 'Laporan Pengeluaran');
-        $this->template->load('default', 'contents', 'artikel/index.php', $data);
+        $this->template->set('title', 'Laporan Pemasukan');
+        $this->template->load('default', 'contents', 'laporan/pengeluaran/index.php', $data);
+    }
+
+    public function laporan_pengeluaran_pdf()
+    {
+
+        $this->load->library('dompdf_gen');
+
+        $keyword1 = $this->input->post('keyword1');
+        $keyword2 = $this->input->post('keyword2');
+        $data = [
+            'awal' =>  $keyword1,
+            'akhir' => $keyword2,
+            'saldoku' => $this->M_laporan_pengeluaran->getTotalPengeluaranBydate($keyword1, $keyword2),
+            'pengeluaran' => $this->M_laporan_pengeluaran->getAll(),
+            'logo' => '<img src="assets/images/logo-default.png" alt="" height="40" class="mr-3">',
+            'gambar' => './uploads/produk/'
+        ];
+        $data['laporanpengeluaran'] = $this->M_laporan_pengeluaran->getPengeluaranBytgl($keyword1, $keyword2);
+        $this->load->view('/laporan/pdf/Pengeluaran', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_data_keuangan.pdf", ['Attachment' => 0]);
     }
 
 
