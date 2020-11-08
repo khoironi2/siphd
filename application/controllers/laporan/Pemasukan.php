@@ -1,9 +1,7 @@
 <?php
+
 class Pemasukan extends CI_Controller
 {
-
-
-
     public function __construct()
     {
         // Construct the parent class
@@ -46,6 +44,34 @@ class Pemasukan extends CI_Controller
         // assign data
         $this->template->set('title', 'Laporan Pemasukan');
         $this->template->load('default', 'contents', 'laporan/pemasukan/index.php', $data);
+    }
+
+    public function laporan_pemasukan_pdf()
+    {
+
+        $this->load->library('dompdf_gen');
+
+        $keyword1 = $this->input->post('keyword1');
+        $keyword2 = $this->input->post('keyword2');
+        $data = [
+            'awal' =>  $keyword1,
+            'akhir' => $keyword2,
+            'saldoku' => $this->M_laporan_pemasukan->getTotalPemasukanBydate($keyword1, $keyword2),
+            'pemasukan' => $this->M_laporan_pemasukan->getAll(),
+            'logo' => '<img src="assets/images/logo-default.png" alt="" height="40" class="mr-3">',
+            'gambar' => './uploads/bukti/'
+        ];
+        $data['laporanpemasukan'] = $this->M_laporan_pemasukan->getPemasukanbytgl($keyword1, $keyword2);
+        $this->load->view('/laporan/pdf/Pemasukan', $data);
+
+        $paper_size = 'A4';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_data_keuangan.pdf", ['Attachment' => 0]);
     }
 
 

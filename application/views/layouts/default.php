@@ -8,12 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.jpg" type="image/ico" />
 
-	<title>
-		<?php foreach ($setting as $data) : ?>
-			<?= $data->site_name; ?>
-		<?php endforeach ?>
-		| <?php echo $title; ?>
-	</title>
+	<title>SIPH</title>
 
 	<!-- Bootstrap -->
 	<link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +43,7 @@
 				<div class="left_col scroll-view">
 
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="#" class="site_title"><img style="width: 65%; padding-left: 40px;" src="<?php echo base_url(); ?>assets/images/logo.png" alt="..."></a>
+						<a href="#" class="site_title">SIPH</a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -56,14 +51,9 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<object data="<?php echo base_url(); ?>uploads/users/<?= $userdata['file'] ?>" type="image/png" style="width : 60px;" class="img-circle profile_img">
-								<img src="<?php echo base_url(); ?>assets/images/image_404.jpeg" alt="default" style="width : 60px;" class="img-circle profile_img">
-							</object>
+
 						</div>
-						<div class="profile_info">
-							<span>Welcome,</span>
-							<h2><?php echo ($userdata['fullname']); ?></h2>
-						</div>
+
 					</div>
 					<!-- /menu profile quick info -->
 					<br />
@@ -119,7 +109,7 @@
 			<!-- footer content -->
 			<footer>
 				<div class="pull-right">
-					Petshop <a href="#">&copy; 2019</a>
+					SIPH <a href="#">&copy; 2020</a>
 				</div>
 				<div class="clearfix"></div>
 			</footer>
