@@ -1,72 +1,58 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/Base.php");
 
 
-class Hewan extends Base {
+class Hewan extends Base
+{
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
-	public function __construct()
+    public function __construct()
     {
         // Construct the parent class
         parent::__construct();
         // load model
         $this->load->model('m_hewan');
+        $this->load->model('m_setting');
         // Load library
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->helper('url');
     }
 
-	public function index()
-	{
-		header("Access-Control-Allow-Origin: *");
-	
-		// get data
+    public function index()
+    {
+        header("Access-Control-Allow-Origin: *");
+
+        // get data
         $total = $this->m_hewan->get_total_hewan();
-
+        $data['setting'] = $this->m_setting->getAll();
         $this->load->library('pagination');
-		$config['base_url'] = base_url().'hewan/index/';
-		$config['total_rows'] = $total;
-		$config['per_page'] = 25;
-		$config['uri_segment'] = 3;
-		$config['from'] = $this->uri->segment(3);
-		$from = $this->uri->segment(3);
+        $config['base_url'] = base_url() . 'hewan/index/';
+        $config['total_rows'] = $total;
+        $config['per_page'] = 25;
+        $config['uri_segment'] = 3;
+        $config['from'] = $this->uri->segment(3);
+        $from = $this->uri->segment(3);
 
-		$this->pagination->initialize($config);	
+        $this->pagination->initialize($config);
 
-		$data['hewan'] = $this->m_hewan->get_all_hewan(array(empty($from) ? 0 : intval($from), $config['per_page']));
+        $data['hewan'] = $this->m_hewan->get_all_hewan(array(empty($from) ? 0 : intval($from), $config['per_page']));
 
-		$numb = empty($from) ? 1 : intval($from);
-		$data["links"] = $this->pagination->create_links();
-		$data["no"]    = $numb++;
+        $numb = empty($from) ? 1 : intval($from);
+        $data["links"] = $this->pagination->create_links();
+        $data["no"]    = $numb++;
 
         // assign data
         $this->template->set('title', 'hewan Petshop Ku');
-        $this->template->load('default', 'contents' , 'hewan/index.php', $data);
- 
-	}
+        $this->template->load('default', 'contents', 'hewan/index.php', $data);
+    }
 
 
-	public function add($id ='')
+    public function add($id = '')
     {
-         $this->template->set('title', 'hewan Petshop Ku');
-        $this->template->load('default', 'contents','hewan/add');
+        $data['setting'] = $this->m_setting->getAll();
+        $this->template->set('title', 'hewan Petshop Ku');
+        $this->template->load('default', 'contents', 'hewan/add', $data);
     }
 
 
@@ -79,17 +65,17 @@ class Hewan extends Base {
         $this->form_validation->set_rules('ras', 'Ras', 'required');
         $this->form_validation->set_rules('age', 'Umur', 'required');
         $this->form_validation->set_rules('description', 'Deskripsi', 'required');
-       
+
         // validate
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', validation_errors());
             redirect('hewan/add');
-        }else{
+        } else {
             // check file 
             $config['upload_path'] = './uploads/hewan/';
             $config['allowed_types'] = 'jpeg|jpg|png';
             $config['max_size'] = 10240;
-            
+
             // load library
             $this->load->library('upload', $config);
             $userdata = $this->session->all_userdata();
@@ -99,7 +85,7 @@ class Hewan extends Base {
                 if (!$this->upload->do_upload('file')) {
                     $this->session->set_flashdata('error', $this->upload->display_errors());
                     redirect('hewan/add');
-                }else{
+                } else {
                     $data = $this->upload->data();
                     $insert = array(
                         'name'          => $this->input->post('name'),
@@ -109,10 +95,10 @@ class Hewan extends Base {
                         'age'           => $this->input->post('age'),
                         'description'   => $this->input->post('description'),
                         'file'          => $data['file_name'],
-                        
+
                     );
-                }   
-            }else{
+                }
+            } else {
                 $insert = array(
                     'name'          => $this->input->post('name'),
                     'type'          => $this->input->post('type'),
@@ -122,8 +108,8 @@ class Hewan extends Base {
                     'description'   => $this->input->post('description'),
                 );
             }
-            
-            
+
+
             // insert process
             $return = $this->m_hewan->insert_hewan($insert);
             if ($return) {
@@ -136,11 +122,12 @@ class Hewan extends Base {
         }
     }
 
-	public function edit($id ='')
+    public function edit($id = '')
     {
+        $result['setting'] = $this->m_setting->getAll();
         $result['detail'] = $this->m_hewan->get_detail_hewan($id);
-         $this->template->set('title', 'hewan Petshop Ku');
-        $this->template->load('default', 'contents','hewan/edit', $result);
+        $this->template->set('title', 'hewan Petshop Ku');
+        $this->template->load('default', 'contents', 'hewan/edit', $result);
     }
 
     public function edit_process()
@@ -152,17 +139,17 @@ class Hewan extends Base {
         $this->form_validation->set_rules('ras', 'Ras', 'required');
         $this->form_validation->set_rules('age', 'Umur', 'required');
         $this->form_validation->set_rules('description', 'Deskripsi', 'required');
-       
+
         // validate
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('hewan/edit/'.$this->input->post('id_pets'));
-        }else{
+            redirect('hewan/edit/' . $this->input->post('id_pets'));
+        } else {
             // check file 
             $config['upload_path'] = './uploads/hewan/';
             $config['allowed_types'] = 'jpeg|jpg|png';
             $config['max_size'] = 10240;
-            
+
             // load library
             $this->load->library('upload', $config);
             $userdata = $this->session->all_userdata();
@@ -172,7 +159,7 @@ class Hewan extends Base {
                 if (!$this->upload->do_upload('file')) {
                     $this->session->set_flashdata('error', $this->upload->display_errors());
                     redirect('hewan/add');
-                }else{
+                } else {
                     $data = $this->upload->data();
                     $update = array(
                         'name'          => $this->input->post('name'),
@@ -182,10 +169,10 @@ class Hewan extends Base {
                         'age'           => $this->input->post('age'),
                         'description'   => $this->input->post('description'),
                         'file'          => $data['file_name'],
-                        
+
                     );
-                }   
-            }else{
+                }
+            } else {
                 $update = array(
                     'name'          => $this->input->post('name'),
                     'type'          => $this->input->post('type'),
@@ -195,23 +182,23 @@ class Hewan extends Base {
                     'description'   => $this->input->post('description'),
                 );
             }
-            
+
             $where = array('id_pets' => $this->input->post('id_pets'));
-            
+
             // insert process
             $return = $this->m_hewan->update_hewan($update, $where);
             if ($return) {
                 $this->session->set_flashdata('success', 'Data berhasil disimpan !!');
-                redirect('hewan/edit/'.$this->input->post('id_pets'));
+                redirect('hewan/edit/' . $this->input->post('id_pets'));
             } else {
                 $this->session->set_flashdata('error', 'Data gagal disimpan !!');
-                redirect('hewan/edit/'.$this->input->post('id_pets'));
+                redirect('hewan/edit/' . $this->input->post('id_pets'));
             }
         }
     }
 
 
-    public function delete($id ='')
+    public function delete($id = '')
     {
         if (empty($id)) {
             $this->session->set_flashdata('error', 'Internal Error !!');
@@ -225,12 +212,12 @@ class Hewan extends Base {
                 // notification
                 $this->session->set_flashdata('success', 'Data berhasil di hapus !!');
                 redirect('hewan');
-            }else{
+            } else {
                 // notification
                 $this->session->set_flashdata('error', 'Data gagal di hapus !!');
                 redirect('hewan');
             }
-        }else{
+        } else {
             // notification
             $this->session->set_flashdata('error', 'Data gagal di hapus !!');
             redirect('hewan');
