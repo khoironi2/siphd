@@ -214,9 +214,6 @@
 										<li><a href="<?= base_url(); ?>">Home<i class="fas fa-chevron-down"></i></a></li>
 										<li><a href="<?= base_url('public/blogs'); ?>">Blog<i class="fas fa-chevron-down"></i></a></li>
 										<li><a href="<?= base_url('public/product/index/'); ?>">All Product<i class="fas fa-chevron-down"></i></a></li>
-										<?php if ($this->session->userdata('email') != null) { ?>
-											<li><a href="<?= base_url('public/emergency'); ?>">Emergency Message<i class="fas fa-chevron-down"></i></a></li>
-										<?php } ?>
 										<li><a href="<?= base_url('public/about_us'); ?>">About US<i class="fas fa-chevron-down"></i></a></li>
 
 									</ul>

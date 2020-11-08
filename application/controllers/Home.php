@@ -37,12 +37,9 @@ class Home extends CI_Controller
 		// get last product
 		$data['last_prod'] = $this->M_home->get_last_product();
 		$data['count_cart'] = $this->M_home->get_count_cart();
-		$data['ready_adopt'] = $this->M_home->get_ready_adopt_home();
 
 		// get categories with product
 		$data['cat_prod'] = $this->M_home->get_category_product();
-		$data['pets'] = $this->M_home->get_category_pets();
-		$data['title'] = 'Petshop';
 		$data['setting'] = $this->M_setting->getAll();
 		$this->load->view('layouts/header', $data);
 		$this->load->view('public/home');

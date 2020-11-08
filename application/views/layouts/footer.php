@@ -3,60 +3,60 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row">
-			<?php foreach ($setting as $data) : ?>
-				<div class="col-lg-3 footer_col">
-					<div class="footer_column footer_contact">
-						<div class="logo_container">
-							<div class="logo"><a href="#">
-									<?= $data->site_name ?>
-								</a></div>
-						</div>
-						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone"><?= $data->no_telpon ?></div>
-						<div class="footer_contact_text">
-							<p><?= $data->alamat_setting ?></p>
-						</div>
-						<div class="footer_social">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fab fa-google"></i></a></li>
-								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-							</ul>
-						</div>
+
+			<div class="col-lg-3 footer_col">
+				<div class="footer_column footer_contact">
+					<div class="logo_container">
+						<div class="logo"><a href="#">
+								SIPHD
+							</a></div>
 					</div>
-				</div>
-
-				<div class="col-lg-2 offset-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Menu</div>
-						<ul class="footer_list">
-							<li><a href="<?= base_url(); ?>">Home</a></li>
-							<li><a href="<?= base_url('/public/blogs'); ?>">Blog</a></li>
-							<li><a href="<?= base_url('/public/product/index/'); ?>">All Product</a></li>
-							<li><a href="<?= base_url('/public/about_us'); ?>">About Us</a></li>
-						</ul>
+					<div class="footer_title">Got Question? Call Us 24/7</div>
+					<div class="footer_phone">081548576555</div>
+					<div class="footer_contact_text">
+						<p>Yogyakarta</p>
 					</div>
-
-				</div>
-
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<ul class="footer_list footer_list_2">
-							<li><a href="<?= base_url('/public/emergency/'); ?>">Emergency Message</a></li>
+					<div class="footer_social">
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+							<li><a href="#"><i class="fab fa-google"></i></a></li>
+							<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
 						</ul>
 					</div>
 				</div>
+			</div>
 
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Customer Care</div>
-						<ul class="footer_list">
-							<li><a href="<?= base_url('/public/profile/'); ?>">My Account</a></li>
-						</ul>
-					</div>
+			<div class="col-lg-2 offset-lg-2">
+				<div class="footer_column">
+					<div class="footer_title">Menu</div>
+					<ul class="footer_list">
+						<li><a href="<?= base_url(); ?>">Home</a></li>
+						<li><a href="<?= base_url('/public/blogs'); ?>">Blog</a></li>
+						<li><a href="<?= base_url('/public/product/index/'); ?>">All Product</a></li>
+						<li><a href="<?= base_url('/public/about_us'); ?>">About Us</a></li>
+					</ul>
 				</div>
+
+			</div>
+
+			<div class="col-lg-2">
+				<div class="footer_column">
+					<ul class="footer_list footer_list_2">
+						<li><a href="<?= base_url('/public/emergency/'); ?>">Emergency Message</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-2">
+				<div class="footer_column">
+					<div class="footer_title">Customer Care</div>
+					<ul class="footer_list">
+						<li><a href="<?= base_url('/public/profile/'); ?>">My Account</a></li>
+					</ul>
+				</div>
+			</div>
 
 		</div>
 	</div>
@@ -74,7 +74,7 @@
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
-						</script> All rights reserved | <?= $data->site_name ?>
+						</script> All rights reserved | SIPHD
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 
@@ -84,7 +84,7 @@
 	</div>
 </div>
 </div>
-<?php endforeach ?>
+
 <script src="<?= base_url('assets/frontend/'); ?>js/jquery-3.3.1.min.js"></script>
 <script src="<?= base_url('assets/frontend/'); ?>styles/bootstrap4/popper.js"></script>
 <script src="<?= base_url('assets/frontend/'); ?>styles/bootstrap4/bootstrap.min.js"></script>

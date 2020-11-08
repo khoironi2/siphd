@@ -32,8 +32,10 @@ class Base extends CI_Controller
 			redirect('/login', 'refresh');
 		}
 
-		if ((!empty($userdata['username']) && $userdata['user_type'] != '1')) {
+		if ((!empty($userdata['username']) && $userdata['user_type'] == '1')) {
 			redirect('public/profile', 'refresh');
+		} elseif ($userdata['username'] && $userdata['user_type'] == '2') {
+			redirect('pemilik/pemilik', 'refresh');
 		}
 	}
 }
