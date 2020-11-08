@@ -44,7 +44,7 @@
                     <td><?= $data->name; ?></td>
                     <td><?= $data->updated_at; ?></td>
                     <td>Rp. <?= number_format($data->price, 0, ',', '.'); ?></td>
-                    <td><img class="img-thumbnail" width="50" src="<?= $gambar ?>/<?= $data->file ?>" alt=""></td>
+                    <td><img class="img-thumbnail" height="50" width="50" src="<?= $gambar ?>/<?= $data->file ?>" alt=""></td>
                 </tr>
             <?php endforeach ?>
             <tr>

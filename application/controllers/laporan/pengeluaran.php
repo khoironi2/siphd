@@ -68,7 +68,6 @@ class Pengeluaran extends CI_Controller
         $orientation = 'landscape';
         $html = $this->output->get_output();
         $this->dompdf->set_paper($paper_size, $orientation);
-
         $this->dompdf->load_html($html);
         $this->dompdf->render();
         $this->dompdf->stream("laporan_data_keuangan.pdf", ['Attachment' => 0]);
