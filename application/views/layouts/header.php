@@ -39,10 +39,15 @@
 					<div class="row">
 						<div class="col d-flex flex-row">
 							<div class="top_bar_contact_item">
-								<div class="top_bar_icon"><img src="<?= base_url('assets/frontend/'); ?>images/phone.png" alt=""></div>+081 548 576 555
+								<div class="top_bar_icon"><img src="<?= base_url('assets/frontend/'); ?>images/phone.png" alt=""></div><?php foreach ($setting as $data) : ?>
+									<?= $data->no_telpon; ?>
+								<?php endforeach ?>
 							</div>
 							<div class="top_bar_contact_item">
-								<div class="top_bar_icon"><img src="<?= base_url('assets/frontend/'); ?>images/mail.png" alt=""></div><a href="mailto:petshopku@gmail.com">petshopku@gmail.com</a>
+								<div class="top_bar_icon"><img src="<?= base_url('assets/frontend/'); ?>images/mail.png" alt=""></div><?php foreach ($setting as $data) : ?>
+
+									<a href="<?= $data->email_setting; ?>"><?= $data->email_setting; ?></a>
+								<?php endforeach ?>
 							</div>
 							<div class="top_bar_content ml-auto">
 								<div class="top_bar_user">
@@ -86,7 +91,9 @@
 					<div class="row">
 						<div class="col-lg-2 col-sm-3 col-3 order-1">
 							<div class="logo_container">
-								<div class="logo"><a href="<?= base_url(); ?>">PetShop</a></div>
+								<div class="logo"><a href="<?= base_url(); ?>"><?php foreach ($setting as $data) : ?>
+											<?= $data->site_name; ?>
+										<?php endforeach ?></a></div>
 							</div>
 						</div>
 
