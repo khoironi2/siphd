@@ -43,6 +43,14 @@
 
 			<div class="col-lg-2">
 				<div class="footer_column">
+					<ul class="footer_list footer_list_2">
+						<li><a href="<?= base_url('/public/emergency/'); ?>">Emergency Message</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-2">
+				<div class="footer_column">
 					<div class="footer_title">Customer Care</div>
 					<ul class="footer_list">
 						<li><a href="<?= base_url('/public/profile/'); ?>">My Account</a></li>
@@ -66,7 +74,7 @@
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
-						</script> All rights reserved |SIPHD
+						</script> All rights reserved | SIPHD
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 

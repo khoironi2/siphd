@@ -9,8 +9,8 @@
       <li><a href="<?php echo base_url(); ?>hewan"><i class="fa fa-paw"></i>Hewan Adopsi</a></li>
       <li><a href="<?php echo base_url(); ?>emergency"><i class="fa fa-exclamation-triangle"></i>Emergency Call</a></li>
       <li><a href="<?php echo base_url(); ?>payment"><i class="fa fa-shopping-bag"></i>Konfirmasi Checkout</a></li>
-      <li><a href="<?php echo base_url(); ?>payment"><i class="fa fa-shopping-bag"></i>Laporan Pemasukan</a></li>
-      <li><a href="<?php echo base_url(); ?>payment"><i class="fa fa-shopping-bag"></i>Laporan Pengeluaran</a></li>
+      <li><a href="<?php echo base_url(); ?>laporan/pemasukan"><i class="fa fa-shopping-bag"></i>Laporan Pemasukan</a></li>
+      <li><a href="<?php echo base_url(); ?>laporan/pengeluaran"><i class="fa fa-shopping-bag"></i>Laporan Pengeluaran</a></li>
       <li><a href="<?php echo base_url(); ?>setting"><i class="fa fa-gear"></i>Setting</a></li>
       <li><a href="<?php echo base_url(); ?>users"><i class="fa fa-users"></i>Users</a></li>
 
