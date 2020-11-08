@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Base extends CI_Controller {
+class Base extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,21 +21,19 @@ class Base extends CI_Controller {
 	 */
 
 	public function __construct()
-    {
-        // Construct the parent class
-        parent::__construct();
-        // load library
-        $this->load->library('session');
-        // check session
-        $userdata = $this->session->all_userdata();
-        if (empty($userdata['username'])) {
-            redirect('/login','refresh');
-        }
+	{
+		// Construct the parent class
+		parent::__construct();
+		// load library
+		$this->load->library('session');
+		// check session
+		$userdata = $this->session->all_userdata();
+		if (empty($userdata['username'])) {
+			redirect('/login', 'refresh');
+		}
 
-        if ((!empty($userdata['username']) && $userdata['user_type'] != '1')) {
-        	redirect('public/profile','refresh');
-        }
-
-    }
-	
+		if ((!empty($userdata['username']) && $userdata['user_type'] != '1')) {
+			redirect('public/profile', 'refresh');
+		}
+	}
 }

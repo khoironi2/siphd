@@ -61,6 +61,7 @@ class Registration extends CI_Controller
         $data['cat_prod']     = $this->m_home->get_category_product();
         $data['title']         = 'Petshop';
         $data['count_cart'] = $this->m_home->get_count_cart();
+        $data['setting'] = $this->M_setting->getAll();
 
 
         $this->load->view('layouts/header', $data);
@@ -118,7 +119,7 @@ class Registration extends CI_Controller
                         'username'      => $this->input->post('username'),
                         'email'         => $this->input->post('email'),
                         'user_type'     => '0',
-                        'active'        => '0',
+                        'active'        => '1',
                         'fullname'      => $this->input->post('fullname'),
                         'address'       => $this->input->post('address'),
                         'phone'         => $this->input->post('phone'),
@@ -133,7 +134,7 @@ class Registration extends CI_Controller
                     'username'      => $this->input->post('username'),
                     'email'         => $this->input->post('email'),
                     'user_type'     => '0',
-                    'active'        => '0',
+                    'active'        => '1',
                     'fullname'      => $this->input->post('fullname'),
                     'address'       => $this->input->post('address'),
                     'phone'         => $this->input->post('phone'),
