@@ -3,31 +3,30 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row">
-			<?php foreach ($setting as $data) : ?>
-				<div class="col-lg-3 footer_col">
-					<div class="footer_column footer_contact">
-						<div class="logo_container">
-							<div class="logo"><a href="#">
-									<?= $data->site_name; ?>
-								</a></div>
-						</div>
-						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone"><?= $data->no_telpon; ?></div>
-						<div class="footer_contact_text">
-							<p><?= $data->alamat_setting; ?></p>
-						</div>
-						<div class="footer_social">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fab fa-google"></i></a></li>
-								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-							</ul>
-						</div>
+
+			<div class="col-lg-3 footer_col">
+				<div class="footer_column footer_contact">
+					<div class="logo_container">
+						<div class="logo"><a href="#">
+								<?= $detail['site_name'] ?>
+							</a></div>
+					</div>
+					<div class="footer_title">Got Question? Call Us 24/7</div>
+					<div class="footer_phone"><?= $detail['no_telpon'] ?></div>
+					<div class="footer_contact_text">
+						<p><?= $detail['alamat_setting'] ?></p>
+					</div>
+					<div class="footer_social">
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+							<li><a href="#"><i class="fab fa-google"></i></a></li>
+							<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+						</ul>
 					</div>
 				</div>
-			<?php endforeach ?>
+			</div>
 
 			<div class="col-lg-2 offset-lg-2">
 				<div class="footer_column">
@@ -75,7 +74,7 @@
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
-						</script> All rights reserved | PetShop
+						</script> All rights reserved | <?= $detail['site_name'] ?>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 

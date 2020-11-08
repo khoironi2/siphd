@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-	<title><?php foreach ($setting as $data) : ?>
-			<?= $data->site_name; ?> | <?= $data->description; ?>
-		<?php endforeach ?></title>
+	<title><?= $detail['site_name'] ?> | <?= $detail['description'] ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="OneTech shop project">
