@@ -2,7 +2,7 @@
 
 <footer class="footer">
 	<div class="container">
-		<div class="row">
+		<div class="row justify-content-center">
 
 			<div class="col-lg-3 footer_col">
 				<div class="footer_column footer_contact">
@@ -39,14 +39,6 @@
 					</ul>
 				</div>
 
-			</div>
-
-			<div class="col-lg-2">
-				<div class="footer_column">
-					<ul class="footer_list footer_list_2">
-						<li><a href="<?= base_url('/public/emergency/'); ?>">Emergency Message</a></li>
-					</ul>
-				</div>
 			</div>
 
 			<div class="col-lg-2">
