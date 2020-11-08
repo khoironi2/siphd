@@ -14,11 +14,31 @@ class M_laporan_pemasukan extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('checkouts');
-        //$this->db->join('tbl_users', 'tbl_users.id_users=tbl_penjualan.id_users');
         $this->db->where('payment_status', '2');
         $result = $this->db->get();
 
         return $result->result();
+    }
+    public function getPenjualan()
+    {
+        $this->db->select('*');
+        $this->db->from('checkouts');
+        $result = $this->db->get();
+
+        return $result->result();
+    }
+    function get_total_penjualan()
+    {
+
+        $sql = "SELECT * FROM checkouts";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            $query->free_result();
+            return count($result);
+        } else {
+            return 0;
+        }
     }
 
     public function getTotalPemasukan()

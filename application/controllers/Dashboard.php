@@ -20,6 +20,9 @@ class Dashboard extends Base
 		header("Access-Control-Allow-Origin: *");
 		$data['total_article'] = $this->m_dashboard->get_total_article();
 		$data['total_product'] = $this->m_dashboard->get_total_product();
+		$data['get_total_penjualan'] = $this->m_dashboard->get_total_penjualan();
+		$data['get_Total_Pemasukan'] = $this->M_laporan_pemasukan->getTotalPemasukan();
+		$data['get_Total_Pengeluaran'] = $this->M_laporan_pengeluaran->getTotalPengeluaran();
 		$data['setting'] = $this->m_setting->getAll();
 
 		// assign data

@@ -132,7 +132,7 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('M_home', 'M_setting', 'm_dashboard', 'M_laporan_pemasukan', 'M_laporan_pengeluaran');
+$autoload['model'] = array('M_home', 'M_setting', 'm_dashboard', 'M_laporan_pemasukan', 'M_laporan_pengeluaran', 'M_setting', 'M_dashboard');
 
-$autoload['libraries'] = array('template');
+$autoload['libraries'] = array('template', 'session');
 $autoload['helper'] = array('url');
