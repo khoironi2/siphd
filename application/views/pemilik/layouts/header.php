@@ -18,6 +18,10 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets/pemilik') ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <link href="<?= base_url('assets/pemilik') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  
+
 </head>
 
 <body id="page-top">
