@@ -28,6 +28,7 @@ class Setting extends Base
         parent::__construct();
         // load model
         $this->load->model('m_setting');
+        $this->load->model('m_home');
         // Load library
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -75,5 +76,35 @@ class Setting extends Base
                 redirect('setting');
             }
         }
+    }
+
+
+    public function profile()
+    {
+        $result['detail'] = $this->m_setting->get_detail_setting();
+        $result['user'] = $this->m_home->get_detail_profile();
+
+        $this->form_validation->set_rules('fullname', 'username', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('email', 'username', 'required');
+        $this->form_validation->set_rules('address', 'username', 'required');
+        $this->form_validation->set_rules('phone', 'username', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->template->load('default', 'contents', 'setting/profile', $result);
+        } else {
+            $data = [
+                'fullname' => $this->input->post('fullname'),
+                'username' => $this->input->post('username'),
+                'address' => $this->input->post('address'),
+                'phone' => $this->input->post('phone'),
+            ];
+
+            $this->db->where('email', $result['user']['email']);
+            $this->db->update('users', $data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Profile Berhasil Diubah!</div>');
+            redirect('setting/profile');
+        }   
     }
 }
