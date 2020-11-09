@@ -77,7 +77,7 @@
 							<li class="">
 								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<object data="<?php echo base_url(); ?>uploads/users/<?= $userdata['file'] ?>" type="image/png" style="width : 40px; border-radius: 50%;">
-										<img src="<?php echo base_url(); ?>assets/images/image_404.jpeg" alt="default" style="width : 40px; border-radius: 50%;">
+										<img src="<?php echo base_url(); ?>uploads/users/<?= $userdata['file'] ?>" alt="default" style="width : 40px; border-radius: 50%;">
 									</object>&nbsp;<?php echo ($userdata['fullname']); ?>
 									<span class=" fa fa-angle-down"></span>
 								</a>

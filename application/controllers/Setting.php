@@ -100,6 +100,21 @@ class Setting extends Base
                 'phone' => $this->input->post('phone'),
             ];
 
+            $upload_image = $_FILES['file']['name'];
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['upload_path'] = './uploads/users/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('file', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+
             $this->db->where('email', $result['user']['email']);
             $this->db->update('users', $data);
 

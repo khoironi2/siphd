@@ -42,6 +42,20 @@
                     <input type="text" class="form-control" name="phone" id="phone" value="<?= $user['phone']; ?>">
                     <?= form_error('phone', '<small class="text-danger pl-3"> ', '</small>'); ?>
                 </div>
+                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img class="img-thumbnail" src="<?= base_url('uploads/users/' . $user['file']); ?>" alt="">
+                        </div>
+                        <div class="col-sm-9">
+                            <label for="file">file</label>
+                            <input type="file" class="form-control" name="file" id="file" value="<?= $user['file']; ?>">
+                        </div>
+                    </div>
+                    <?= form_error('phone', '<small class="text-danger pl-3"> ', '</small>'); ?>
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane"></i> Simpan</button>
                 </div>
