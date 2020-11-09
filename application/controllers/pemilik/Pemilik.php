@@ -9,6 +9,7 @@ class Pemilik extends CI_Controller
         // load model
         $this->load->model('M_dashboard');
         $this->load->model('M_setting');
+        $this->load->model('M_home');
     }
     public function index()
     {
@@ -20,6 +21,8 @@ class Pemilik extends CI_Controller
         $data['get_Total_Pemasukan'] = $this->M_laporan_pemasukan->getTotalPemasukan();
         $data['get_Total_Pengeluaran'] = $this->M_laporan_pengeluaran->getTotalPengeluaran();
         $data['setting'] = $this->M_setting->getAll();
+
+        $data['user'] = $this->M_home->get_detail_profile();
 
         $this->load->view('pemilik/layouts/header', $data);
         $this->load->view('pemilik/layouts/sidebar');
@@ -36,6 +39,7 @@ class Pemilik extends CI_Controller
             'get_total_penjualan' => $this->M_laporan_pemasukan->get_total_penjualan(),
             'get_Total_Pemasukan' => $this->M_laporan_pemasukan->getTotalPemasukan()
         ];
+        $data['user'] = $this->M_home->get_detail_profile();
 
         $this->load->view('pemilik/layouts/header', $data);
         $this->load->view('pemilik/layouts/sidebar');
@@ -52,6 +56,7 @@ class Pemilik extends CI_Controller
             'checkouts_selesai' => $this->M_laporan_pemasukan->getAll(),
             'get_Total_Pemasukan' => $this->M_laporan_pemasukan->getTotalPemasukan()
         ];
+        $data['user'] = $this->M_home->get_detail_profile();
 
         $this->load->view('pemilik/layouts/header', $data);
         $this->load->view('pemilik/layouts/sidebar');
@@ -95,6 +100,8 @@ class Pemilik extends CI_Controller
             'saldoku' => $this->M_laporan_pengeluaran->getTotalPengeluaran(),
             'pengeluaran' => $this->M_laporan_pengeluaran->getAll()
         ];
+        $data['user'] = $this->M_home->get_detail_profile();
+        
         $this->load->view('pemilik/layouts/header', $data);
         $this->load->view('pemilik/layouts/sidebar');
         $this->load->view('pemilik/layouts/topbar');

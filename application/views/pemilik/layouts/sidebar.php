@@ -38,6 +38,12 @@
                 <i class="fas fa-fw fa-shopping-cart"></i>
                 <span>Laporan Pengeluaran</span></a>
         </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('pemilik/profile'); ?>">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Profile</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
