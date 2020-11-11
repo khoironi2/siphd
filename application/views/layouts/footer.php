@@ -1,35 +1,30 @@
 <!-- Footer -->
 
-<footer class="footer">
+<footer class="footer bg-primary">
 	<div class="container">
 		<div class="row justify-content-center">
 
 			<div class="col-lg-3 footer_col">
 				<div class="footer_column footer_contact">
 					<div class="logo_container">
-						<div class="logo"><a href="#">
-								SIPHD
-							</a></div>
+						<div class="logo"><a href="#" class="text-white">SIPHD</a></div>
 					</div>
-					<div class="footer_title">Got Question? Call Us 24/7</div>
-					<div class="footer_phone">081548576555</div>
+					<div class="footer_title text-white">Got Question? Call Us 24/7</div>
+					<div class="footer_phone text-white">081548576555</div>
 					<div class="footer_contact_text">
-						<p>Jl. Monjali</p>
-					</div>
-					<div class="footer_social">
-
+						<p class="text-white">Jl. Monjali</p>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-lg-2 offset-lg-2">
 				<div class="footer_column">
-					<div class="footer_title">Menu</div>
+					<div class="footer_title text-white">Menu</div>
 					<ul class="footer_list">
-						<li><a href="<?= base_url(); ?>">Home</a></li>
-						<li><a href="<?= base_url('/public/blogs'); ?>">Blog</a></li>
-						<li><a href="<?= base_url('/public/product/index/'); ?>">All Product</a></li>
-						<li><a href="<?= base_url('/public/about_us'); ?>">About Us</a></li>
+						<li><a class="text-white" href="<?= base_url(); ?>">Home</a></li>
+						<li><a class="text-white" href="<?= base_url('/public/blogs'); ?>">Blog</a></li>
+						<li><a class="text-white" href="<?= base_url('/public/product/index/'); ?>">All Product</a></li>
+						<li><a class="text-white" href="<?= base_url('/public/about_us'); ?>">About Us</a></li>
 					</ul>
 				</div>
 
@@ -37,9 +32,9 @@
 
 			<div class="col-lg-2">
 				<div class="footer_column">
-					<div class="footer_title">Customer Care</div>
+					<div class="footer_title text-white">Customer Care</div>
 					<ul class="footer_list">
-						<li><a href="<?= base_url('/public/profile/'); ?>">My Account</a></li>
+						<li><a class="text-white" href="<?= base_url('/public/profile/'); ?>">My Account</a></li>
 					</ul>
 				</div>
 			</div>
