@@ -120,7 +120,7 @@
 											<div class="banner_2_title">
 												<a href="<?= base_url('public/product/detail/') . $res['id_product']; ?>"><?= $res['name'] ?></a>
 											</div>
-											<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
+											<div class="banner_2_text"><?= substr($res['description'], 0, 80); ?>.</div>
 											<div class="rating_r rating_r_4 banner_2_rating">Rp. <?= number_format($res['price'], 2) ?></div>
 											<!-- <div class="button banner_2_button"><a href="#">Explore</a></div> -->
 											<button class="button banner_2_button btn btn-primary <?php if ($this->session->userdata('email') == null) {
