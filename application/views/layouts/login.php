@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title> <?php foreach ($setting as $data) : ?>
-      <?= $data->site_name; ?>
-    <?php endforeach ?></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.jpg" type="image/ico" />
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-  <link rel="stylesheet" type="text/css" href="<?= base_url('assets/frontend/'); ?>styles/bootstrap4/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title> <?php foreach ($setting as $data) : ?>
+            <?= $data->site_name; ?>
+        <?php endforeach ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="icon" href="<?php echo base_url(); ?>assets/images/logo-default.png" type="image/ico" />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/frontend/'); ?>styles/bootstrap4/bootstrap.min.css">
 </head>
 
 <body>
@@ -18,9 +18,9 @@
             <div class="col-sm-6">
 
                 <?php
-                    $this->load->helper('form');
-                    $error = $this->session->flashdata('error');
-                    if ($error) { ?>
+                $this->load->helper('form');
+                $error = $this->session->flashdata('error');
+                if ($error) { ?>
                     <div class="alert alert-danger"><?php echo $error; ?> !!</div>
                 <?php } ?>
 
@@ -50,8 +50,8 @@
     </div>
 
 
-  <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/login/js/index.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/login/js/index.js"></script>
 </body>
 
 </html>

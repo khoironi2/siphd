@@ -14,16 +14,10 @@
 					<div class="footer_title">Got Question? Call Us 24/7</div>
 					<div class="footer_phone">081548576555</div>
 					<div class="footer_contact_text">
-						<p>Yogyakarta</p>
+						<p>Jl. Monjali</p>
 					</div>
 					<div class="footer_social">
-						<ul>
-							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-							<li><a href="#"><i class="fab fa-google"></i></a></li>
-							<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-						</ul>
+
 					</div>
 				</div>
 			</div>

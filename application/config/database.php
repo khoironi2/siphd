@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:3306',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'siphd',
+	'hostname' => 'localhost',
+	'username' => 'khoiron1_khoironi',
+	'password' => 'Bpoonline18',
+	'database' => 'khoiron1_siph',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

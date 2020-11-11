@@ -6,7 +6,8 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-text mx-3">SIPHD</div>
+            <img height="50" src="<?php echo base_url(); ?>assets/images/logo-default.png">
+            <div class="sidebar-brand-text mx-3">SIPH</div>
         </a>
 
         <!-- Divider -->
@@ -38,7 +39,7 @@
                 <i class="fas fa-fw fa-shopping-cart"></i>
                 <span>Laporan Pengeluaran</span></a>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url('pemilik/profile'); ?>">
                 <i class="fas fa-fw fa-user"></i>
