@@ -77,6 +77,6 @@ class Login extends CI_Controller
     {
         $this->session->sess_destroy();
         $this->session->set_flashdata('success', 'Logout Sukses');
-        redirect('login');
+        redirect('/');
     }
 }

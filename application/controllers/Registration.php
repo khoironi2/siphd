@@ -118,7 +118,7 @@ class Registration extends CI_Controller
                     $insert = array(
                         'username'      => $this->input->post('username'),
                         'email'         => $this->input->post('email'),
-                        'user_type'     => '0',
+                        'user_type'     => '1',
                         'active'        => '1',
                         'fullname'      => $this->input->post('fullname'),
                         'address'       => $this->input->post('address'),

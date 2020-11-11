@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.jpg" type="image/ico" />
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/logo-default.png" type="image/ico" />
 
 	<title>SIPH</title>
 
@@ -45,7 +45,10 @@
 				<div class="left_col scroll-view">
 
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="#" class="site_title">SIPH</a>
+						<div class="sidebar-brand-icon rotate-n-15">
+							<img height="50" src="<?php echo base_url(); ?>assets/images/logo-default.png"> <a style="color: white; font-size:large;">SIPH</a>
+						</div>
+
 					</div>
 
 					<div class="clearfix"></div>
@@ -130,7 +133,7 @@
 	<script src="<?php echo base_url(); ?>assets/vendors/skycons/skycons.js"></script>
 	<!-- Custom Theme Scripts -->
 	<script src="<?php echo base_url(); ?>assets/build/js/custom.js"></script>
-	
+
 	<script src="<?= base_url('assets/pemilik/vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
 	<script src="<?= base_url('assets/pemilik/vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
@@ -152,7 +155,7 @@
 
 		$(document).ready(function() {
 			$('#datatable').DataTable();
-		} );
+		});
 	</script>
 
 </body>

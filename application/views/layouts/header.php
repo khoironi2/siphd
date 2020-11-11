@@ -9,6 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="OneTech shop project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="<?php echo base_url(); ?>assets/images/logo-default.png" type="image/ico" />
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/frontend/'); ?>styles/bootstrap4/bootstrap.min.css">
 	<link href="<?= base_url('assets/frontend/'); ?>plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/frontend/'); ?>plugins/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -46,7 +47,7 @@
 							<div class="top_bar_contact_item">
 								<div class="top_bar_icon"><img src="<?= base_url('assets/frontend/'); ?>images/mail.png" alt=""></div><?php foreach ($setting as $data) : ?>
 
-									<a href="<?= $data->email_setting; ?>"><?= $data->email_setting; ?></a>
+									<a><?= $data->email_setting; ?></a>
 								<?php endforeach ?>
 							</div>
 							<div class="top_bar_content ml-auto">
@@ -92,7 +93,7 @@
 						<div class="col-lg-2 col-sm-3 col-3 order-1">
 							<div class="logo_container">
 								<div class="logo"><a href="<?= base_url(); ?>"><?php foreach ($setting as $data) : ?>
-											<?= $data->site_name; ?>
+											<img height="50" src="<?php echo base_url(); ?>assets/images/logo-default.png"> <?= $data->site_name; ?>
 										<?php endforeach ?></a></div>
 							</div>
 						</div>

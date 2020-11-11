@@ -30,6 +30,7 @@ class Home extends CI_Controller
 		// load model
 		$this->load->model('M_home');
 		$this->load->model('M_setting');
+		$this->load->library('encryption');
 	}
 
 	public function index()
