@@ -110,6 +110,11 @@
 						<div class="banner_2_item">
 							<div class="container fill_height">
 								<div class="row fill_height">
+									<div class="col-lg-8 col-md-6 fill_height">
+										<div class="banner_2_image_container">
+											<div class="banner_2_image"><img src="<?= base_url('uploads/produk/' . $res['file']); ?>" alt=""></div>
+										</div>
+									</div>
 									<div class="col-lg-4 col-md-6 fill_height">
 										<div class="banner_2_content">
 											<div class="banner_2_title">
@@ -118,16 +123,9 @@
 											<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
 											<div class="rating_r rating_r_4 banner_2_rating">Rp. <?= number_format($res['price'], 2) ?></div>
 											<!-- <div class="button banner_2_button"><a href="#">Explore</a></div> -->
-										<button class="button banner_2_button btn btn-primary <?php if ($this->session->userdata('email') == null) {
+											<button class="button banner_2_button btn btn-primary <?php if ($this->session->userdata('email') == null) {
 																								echo ('confirm');
 																							} ?>" onclick="window.location.href='<?= base_url('public/cart/add_single/') . $res['id_product']; ?>'">Add to Cart</button>
-										</div>
-
-										
-									</div>
-									<div class="col-lg-8 col-md-6 fill_height">
-										<div class="banner_2_image_container">
-											<div class="banner_2_image"><img src="<?= base_url('uploads/produk/' . $res['file']); ?>" alt=""></div>
 										</div>
 									</div>
 								</div>
