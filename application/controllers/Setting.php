@@ -96,6 +96,7 @@ class Setting extends Base
             $data = [
                 'fullname' => $this->input->post('fullname'),
                 'username' => $this->input->post('username'),
+                'email' => $this->input->post('email'),
                 'address' => $this->input->post('address'),
                 'phone' => $this->input->post('phone'),
             ];
@@ -115,7 +116,7 @@ class Setting extends Base
                 }
             }
 
-            $this->db->where('email', $result['user']['email']);
+            $this->db->where('id_users', $result['user']['id_users']);
             $this->db->update('users', $data);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Profile Berhasil Diubah!</div>');

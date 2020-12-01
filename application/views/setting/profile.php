@@ -17,6 +17,7 @@
         </div>
         <div class="x_content">
             <form role="form" action="<?php echo base_url() ?>setting/profile" method="post" enctype="multipart/form-data">
+                <input type="hidden" value="<?= $user['id_users']; ?>" name="id_users">
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
                     <input type="text" class="form-control" name="fullname" id="fullname" value="<?= $user['fullname']; ?>">
@@ -29,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" id="email" value="<?= $user['email']; ?>" readonly>
+                    <input type="text" class="form-control" name="email" id="email" value="<?= $user['email']; ?>">
                     <?= form_error('email', '<small class="text-danger pl-3"> ', '</small>'); ?>
                 </div>
                 <div class="form-group">

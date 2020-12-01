@@ -68,7 +68,7 @@
 										<td>Email</td>
 										<td>
 											<div class="product_quantity clearfix">
-												<input type="text" class="form-control" value="<?=$detail['email']?>" name="email" readonly>
+												<input type="text" class="form-control" value="<?=$detail['email']?>" name="email">
 											</div>
 
 										</td>											
@@ -77,7 +77,7 @@
 										<td>Username</td>
 										<td>
 											<div class="product_quantity clearfix">
-												<input type="text" class="form-control" value="<?=$detail['username']?>" name="username" readonly>
+												<input type="text" class="form-control" value="<?=$detail['username']?>" name="username">
 											</div>
 
 										</td>											
